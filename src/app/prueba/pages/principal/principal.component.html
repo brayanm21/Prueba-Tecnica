@@ -1,0 +1,118 @@
+<div class="row">
+
+  <div class="col-lg-3 ">
+    <div class="container mt-2">
+
+      <div class="alert bg-warning text-center" role="alert">
+        <strong>Municipios</strong>
+      </div>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Municipio</th>
+            <th scope="col">Dane</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let item of postMunicipios" (click)="obtenerInstitucionesMunicipio(item.dane)">
+            <td *ngIf="item.dane != municipio; else elsemunicipio">{{item.nombre}}</td>
+            <ng-template #elsemunicipio>
+              <td style="color: rgb(241, 208, 21);">{{item.nombre}}</td>
+            </ng-template>
+
+            <td *ngIf="item.dane != municipio; else elsemunicipios">{{item.dane}}</td>
+            <ng-template #elsemunicipios>
+              <td style="color: rgb(241, 208, 21);">{{item.dane}}</td>
+            </ng-template>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="col-lg  mt-3">
+    <div class="container mt-2">
+      <div *ngIf="postInstitucionesMunicipio" class="alert bg-warning text-center" role="alert">
+        <strong>Institucion educativa</strong>
+      </div>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr *ngIf="postInstitucionesMunicipio">
+            <th scope="col">Institucion</th>
+            <th scope="col">Dane</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of postInstitucionesMunicipio" (click)="obtenerSedesInstitucion(item.dane)">
+            <td *ngIf="item.dane != institucionesMunicipio; else elseInstitucion">{{item.nombre}}</td>
+            <ng-template #elseInstitucion>
+              <td style="color: rgb(241, 208, 21);">{{item.nombre}}</td>
+            </ng-template>
+            <td *ngIf="item.dane != institucionesMunicipio; else elseInstitucions">{{item.dane}}</td>
+            <ng-template #elseInstitucions>
+              <td style="color: rgb(241, 208, 21);">{{item.dane}}</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="col-lg  mt-3">
+    <div class="container mt-2">
+      <div *ngIf="postSedesInstitucion" class="alert bg-warning text-center" role="alert">
+        <strong>Sedes asociadas</strong>
+      </div>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr *ngIf="postSedesInstitucion">
+            <th scope="col">Sede Asociada</th>
+            <th scope="col">Dane</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of postSedesInstitucion" (click)="obtenerGruposSede(item.dane)">
+            <td *ngIf="item.dane != sedesInstitucion; else elseSedesInstitucion">{{item.nombre}}</td>
+            <ng-template #elseSedesInstitucion>
+              <td style="color: rgb(241, 208, 21);">{{item.nombre}}</td>
+            </ng-template>
+            <td *ngIf="item.dane != sedesInstitucion; else elseSedesInstitucions">{{item.dane}}</td>
+            <ng-template #elseSedesInstitucions>
+              <td style="color: rgb(241, 208, 21);">{{item.dane}}</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg  mt-3">
+    <div class="container mt-2">
+      <div *ngIf="postGruposSede" class="alert bg-warning text-center" role="alert">
+        <strong>Grupos registrados</strong>
+      </div>
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr *ngIf="postGruposSede">
+            <th scope="col">Grupo</th>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of postGruposSede">
+            <td>{{item.numGrupo}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
